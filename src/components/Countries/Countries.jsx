@@ -4,11 +4,8 @@ import Country from "../Country/Country";
 import './Countries.css'
 
 const Countries = () => {
+    
     const [countries, setCountries] = useState([])
-
-    const [visitedCountries, setVisitedCountries] = useState([])
-
-    const [visitedFlags, setVisitedFlags] = useState([])
 
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
@@ -16,13 +13,16 @@ const Countries = () => {
             .then(data => setCountries(data))
     }, [])
 
+    const [visitedCountries, setVisitedCountries] = useState([])
+    // console.log(visitedCountries);
     const handleVisitedCountry = country =>{
         // console.log('add to visited country');
         // console.log(country);
         const newVisitedCountries = [...visitedCountries, country];
         setVisitedCountries(newVisitedCountries);
     }
-
+    
+    const [visitedFlags, setVisitedFlags] = useState([])
     const handleAddFlags = flag =>{
         // console.log('adding flag');
         const newVisitedFlag = [...visitedFlags, flag];
